@@ -45,6 +45,9 @@ def nal_dropper(nal_path,tmp_drop_manifest_path,tmp_drop_video_path):
 # TODO:stub
 def psnr_computer(origin_video_path, tmp_drop_video_path, psnr_log_path):
     #print(origin_video_path+" "+ tmp_drop_video_path+" "+ psnr_log_path)
+    cmd = "ffmpeg -i "+origin_video_path+" -i "+tmp_drop_video_path+" -lavfi psnr=\"stats_file="+psnr_log_path+"\" -f null -"
+    logging.debug(cmd)
+    os.system(cmd)
     return 0
 
 if __name__=="__main__":
@@ -74,5 +77,5 @@ if __name__=="__main__":
                 nal_dropper(nal_path, tmp_drop_manifest_path, tmp_drop_video_path)
                 origin_video_path = os.path.join(video_type_path, origin_video_name)
                 psnr_log_path = os.path.join(tmp_psnr_path,str(loss_rate)+".log")
+                psnr_log_path=psnr_log_path.replace("\\","/")
                 psnr_computer(origin_video_path, tmp_drop_video_path, psnr_log_path)
-        #print(jconfig)
