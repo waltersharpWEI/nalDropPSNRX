@@ -52,7 +52,7 @@ def psnr_computer(origin_video_path, tmp_drop_video_path, psnr_log_path):
 
 if __name__=="__main__":
     logging.basicConfig(level=logging.WARNING)
-    config_path = "../nalDropPSNR2/exp_config.json"
+    config_path = "exp_config.json"
     with open(config_path) as f1:
         jconfig = json.load(f1)
         video_types = jconfig["video_types"]
