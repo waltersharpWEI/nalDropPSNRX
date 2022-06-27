@@ -128,5 +128,5 @@ if __name__=="__main__":
     #compte_ssim
     run_ssim_exp(config_path)
     #compute_psnr
-    run_psnr_exp(config_path)
+    #run_psnr_exp(config_path)
 

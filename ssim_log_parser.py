@@ -6,6 +6,8 @@ import os
 import logging
 import pandas as pd
 import numpy as np
+import argparse
+from pathlib import Path
 
 def mean_ssim_not_null(ssim_log_path):
     ssim_avgs = []
@@ -67,10 +69,17 @@ def ssim_log_parse(confg_path,csv_root):
 
 if __name__=="__main__":
     logging.basicConfig(level=logging.DEBUG)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-o", "--output", help="Output path")
+    args = parser.parse_args()
+    output_path = "."
+    if args.output:
+        logging.debug("output exp logs to " + args.output)
+        output_path = args.output
+
     config_path = "exp_config.json"
-    csv_root = "."
+    csv_root = output_path
+    Path(csv_root).mkdir(parents=True, exist_ok=True)
     ssim_log_parse(config_path,csv_root)
-    #ssim_path = "tmp/attribute/ssim_log/4.log"
-    #ssim = mean_ssim_not_null(ssim_path)
-    #logging.debug(ssim)
+
 

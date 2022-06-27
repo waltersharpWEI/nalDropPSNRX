@@ -8,6 +8,7 @@ import logging
 import random
 from pathlib import Path
 from nal_assembler import nal_assemble
+import argparse
 
 #input, the original manifest, the dropped manifest path, and loss rate
 #output, 0 if ok, 1 if fail
